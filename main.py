@@ -19,3 +19,8 @@ evaluate_model(log_model, X_test, y_test, model_name="Logistic Regression")
 
 print("\n✅ Churn Prediction Pipeline Complete.")
 
+from src.train_lightgbm import train_lightgbm
+from src.evaluate import evaluate_model
+
+lgb_model = train_lightgbm(X_train, y_train)
+evaluate_model(lgb_model, X_test, y_test, model_name="LightGBM")
