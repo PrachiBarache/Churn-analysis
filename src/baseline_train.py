@@ -3,6 +3,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
+from src.eval import *
 
 def train_logistic_model(X_train, y_train, save_path="models/logistic_model.pkl"):
     """
@@ -72,3 +73,24 @@ def train_xgboost(X_train, y_train, save_path="models/xgboost_model.pkl"):
     joblib.dump(model, save_path)
     print(f"✅ XGBoost model saved at {save_path}")
     return model
+
+
+def run_baseline_models(X_train, X_test, y_train, y_test):
+    """
+    Train and evaluate baseline models.
+    """
+    print("\n🔹 Training Logistic Regression")
+    log_model = train_logistic_model(X_train, y_train)
+    evaluate_model(log_model, X_test, y_test, model_name="Logistic Regression")
+
+    print("\n🔹 Training Decision Tree")
+    dt_model = train_decision_tree(X_train, y_train)
+    evaluate_model(dt_model, X_test, y_test, model_name="Decision Tree")
+
+    print("\n🔹 Training Random Forest")
+    rf_model = train_random_forest(X_train, y_train)
+    evaluate_model(rf_model, X_test, y_test, model_name="Random Forest")
+
+    print("\n🔹 Training XGBoost")
+    xgb_model = train_xgboost(X_train, y_train)
+    evaluate_model(xgb_model, X_test, y_test, model_name="XGBoost")

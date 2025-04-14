@@ -1,5 +1,6 @@
 import joblib
 import lightgbm as lgb
+from src.eval import *
 
 def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl"):
     """
@@ -82,3 +83,24 @@ def train_mlp_model(X_train, y_train, save_path="models/mlp_model.pkl"):
     joblib.dump(model, save_path)
     print(f"✅ MLP model saved at {save_path}")
     return model
+
+
+def run_advanced_models(X_train, X_test, y_train, y_test):
+    """
+    Train and evaluate advanced models.
+    """
+    print("\n🔸 Training LightGBM")
+    lgb_model = train_lightgbm(X_train, y_train)
+    evaluate_model(lgb_model, X_test, y_test, model_name="LightGBM")
+
+    print("\n🔸 Training CatBoost")
+    cat_model = train_catboost(X_train, y_train)
+    evaluate_model(cat_model, X_test, y_test, model_name="CatBoost")
+
+    print("\n🔸 Training MLP (Neural Net)")
+    mlp_model = train_mlp_model(X_train, y_train)
+    evaluate_model(mlp_model, X_test, y_test, model_name="MLP Classifier")
+
+    print("\n🔸 Training Stacked Ensemble")
+    stack_model = train_stacked_model(X_train, y_train)
+    evaluate_model(stack_model, X_test, y_test, model_name="Stacked Ensemble")
