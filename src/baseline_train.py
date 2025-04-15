@@ -9,17 +9,9 @@ import os
 
 
 def train_logistic_model(X_train, y_train, save_path="models/logistic_model.pkl"):
-    """
-    Trains a baseline logistic regression model with class balancing.
+     
+    #Trains a baseline logistic regression model with class balancing.
 
-    Parameters:
-        X_train (array): Training features
-        y_train (array): Training labels
-        save_path (str): Path to save the trained model
-
-    Returns:
-        model: Trained LogisticRegression model
-    """
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
     # Logistic Regression with balanced class weights to handle class imbalance
@@ -30,24 +22,24 @@ def train_logistic_model(X_train, y_train, save_path="models/logistic_model.pkl"
 
     # Save the trained model
     joblib.dump(model, save_path)
-    print(f"✅ Logistic Regression model saved to {save_path}")
+    print(f"  Logistic Regression model saved to {save_path}")
 
     return model
 
 def train_decision_tree(X_train, y_train, save_path="models/decision_tree.pkl"):
-    """
-    Trains a basic Decision Tree classifier.
-    """
+     
+    #Trains a basic Decision Tree classifier.
+     
     model = DecisionTreeClassifier(class_weight='balanced', max_depth=5, random_state=42)
     model.fit(X_train, y_train)
     joblib.dump(model, save_path)
-    print(f"✅ Decision Tree saved at {save_path}")
+    print(f"  Decision Tree saved at {save_path}")
     return model
 
 def train_random_forest(X_train, y_train, save_path="models/random_forest.pkl"):
-    """
-    Trains a Random Forest classifier.
-    """
+     
+    #Trains a Random Forest classifier.
+     
     model = RandomForestClassifier(
         n_estimators=100,
         class_weight='balanced',
@@ -56,14 +48,14 @@ def train_random_forest(X_train, y_train, save_path="models/random_forest.pkl"):
     )
     model.fit(X_train, y_train)
     joblib.dump(model, save_path)
-    print(f"✅ Random Forest saved at {save_path}")
+    print(f"  Random Forest saved at {save_path}")
     return model
 
 
 def train_xgboost(X_train, y_train, save_path="models/xgboost_model.pkl"):
-    """
-    Trains an XGBoost classifier.
-    """
+     
+    #Trains an XGBoost classifier.
+     
     model = xgb.XGBClassifier(
         scale_pos_weight=5,  # Ratio of negative to positive class
         learning_rate=0.1,
@@ -75,26 +67,26 @@ def train_xgboost(X_train, y_train, save_path="models/xgboost_model.pkl"):
     )
     model.fit(X_train, y_train)
     joblib.dump(model, save_path)
-    print(f"✅ XGBoost model saved at {save_path}")
+    print(f"  XGBoost model saved at {save_path}")
     return model
 
 
 def run_baseline_models(X_train, X_test, y_train, y_test, pdf):
-    """
-    Train and evaluate baseline models.
-    """
-    print("\n🔹 Training Logistic Regression")
+     
+    #Train and evaluate baseline models.
+     
+    print("\n  Training Logistic Regression")
     log_model = train_logistic_model(X_train, y_train)
     evaluate_model(log_model, X_test, y_test, "Logistic Regression", pdf)
 
-    print("\n🔹 Training Decision Tree")
+    print("\n  Training Decision Tree")
     dt_model = train_decision_tree(X_train, y_train)
     evaluate_model(dt_model, X_test, y_test,"Decision Tree",pdf)
 
-    print("\n🔹 Training Random Forest")
+    print("\n  Training Random Forest")
     rf_model = train_random_forest(X_train, y_train)
     evaluate_model(rf_model, X_test, y_test,"Random Forest",pdf)
 
-    print("\n🔹 Training XGBoost")
+    print("\n  Training XGBoost")
     xgb_model = train_xgboost(X_train, y_train)
     evaluate_model(xgb_model, X_test, y_test,"XGBoost", pdf)

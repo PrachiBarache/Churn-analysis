@@ -17,4 +17,4 @@ with PdfPages("results/all_models_report.pdf") as pdf:
     run_baseline_models(X_train, X_test, y_train, y_test, pdf)
     run_advanced_models(X_train, X_test, y_train, y_test, pdf)
 
-print("\n✅ All models trained and evaluated.")
+print("\n All models trained and evaluated.")

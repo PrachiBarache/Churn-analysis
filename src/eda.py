@@ -44,4 +44,4 @@ def generate_eda_report(df, save_path="results/eda_report.pdf"):
             pdf.savefig()
             plt.close()
 
-    print(f"📊 EDA PDF report saved to {save_path}")
+    print(f" EDA PDF report saved to {save_path}")

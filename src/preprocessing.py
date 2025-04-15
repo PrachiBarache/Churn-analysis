@@ -2,19 +2,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
-def preprocess_data(df: pd.DataFrame, target_col: str):
-    """
-    Clean and prepare features for modeling.
+   # Clean and prepare features for modeling.
 
-    Steps:
-    - Handle missing values
-    - Encode categorical variables
-    - Scale numerical features
-    - Train/test split
-
-    Returns:
-        X_train, X_test, y_train, y_test
-    """
+def preprocess_data(df: pd.DataFrame, target_col: str):     
     df = df.copy()
 
     # Drop irrelevant or ID columns

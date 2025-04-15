@@ -6,15 +6,15 @@ from sklearn.ensemble import StackingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neural_network import MLPClassifier
 from catboost import CatBoostClassifier
 
 
 def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl",pdf_path="results/all_models_report.pdf"):
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
-    """
-    Trains a LightGBM classifier.
-    """
+    #Trains a LightGBM classifier
+
     model = lgb.LGBMClassifier(
         class_weight='balanced',  # Handle class imbalance
         max_depth=6,
@@ -24,15 +24,15 @@ def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl",pdf_p
     )
     model.fit(X_train, y_train)
     joblib.dump(model, save_path)
-    print(f"✅ LightGBM model saved at {save_path}")
+    print(f"  LightGBM model saved at {save_path}")
     return model
 
 
 
 def train_catboost(X_train, y_train, save_path="models/catboost_model.pkl"):
-    """
-    Trains a CatBoost classifier.
-    """
+     
+    #Trains a CatBoost classifier.
+     
     model = CatBoostClassifier(
         iterations=100,
         depth=6,
@@ -43,13 +43,13 @@ def train_catboost(X_train, y_train, save_path="models/catboost_model.pkl"):
     )
     model.fit(X_train, y_train)
     joblib.dump(model, save_path)
-    print(f"✅ CatBoost model saved at {save_path}")
+    print(f"  CatBoost model saved at {save_path}")
     return model
 
 def train_stacked_model(X_train, y_train, save_path="models/stacked_model.pkl"):
-    """
-    Trains a stacked ensemble model.
-    """
+     
+    #Trains a stacked ensemble model.
+     
     base_learners = [
         ('dt', DecisionTreeClassifier(max_depth=5, class_weight='balanced')),
         ('rf', RandomForestClassifier(n_estimators=100, class_weight='balanced'))
@@ -63,16 +63,15 @@ def train_stacked_model(X_train, y_train, save_path="models/stacked_model.pkl"):
 
     stack_model.fit(X_train, y_train)
     joblib.dump(stack_model, save_path)
-    print(f"✅ Stacked model saved at {save_path}")
+    print(f"  Stacked model saved at {save_path}")
     return stack_model
 
-import joblib
-from sklearn.neural_network import MLPClassifier
+
 
 def train_mlp_model(X_train, y_train, save_path="models/mlp_model.pkl"):
-    """
-    Trains a multi-layer perceptron (MLP) neural network.
-    """
+     
+    #Trains a multi-layer perceptron (MLP) neural network.
+     
     model = MLPClassifier(
         hidden_layer_sizes=(64, 32),
         activation='relu',
@@ -82,26 +81,26 @@ def train_mlp_model(X_train, y_train, save_path="models/mlp_model.pkl"):
     )
     model.fit(X_train, y_train)
     joblib.dump(model, save_path)
-    print(f"✅ MLP model saved at {save_path}")
+    print(f"  MLP model saved at {save_path}")
     return model
 
 
 def run_advanced_models(X_train, X_test, y_train, y_test,pdf):
-    """
-    Train and evaluate advanced models.
-    """
-    print("\n🔸 Training LightGBM")
+     
+    #Train and evaluate advanced models.
+     
+    print("\n  Training LightGBM")
     lgb_model = train_lightgbm(X_train, y_train)
     evaluate_model(lgb_model, X_test, y_test, "LightGBM", pdf)
 
-    print("\n🔸 Training CatBoost")
+    print("\n  Training CatBoost")
     cat_model = train_catboost(X_train, y_train)
     evaluate_model(cat_model, X_test, y_test, "CatBoost", pdf)
 
-    print("\n🔸 Training MLP (Neural Net)")
+    print("\n  Training MLP (Neural Net)")
     mlp_model = train_mlp_model(X_train, y_train)
     evaluate_model(mlp_model, X_test, y_test, "MLP Classifier",pdf)
 
-    print("\n🔸 Training Stacked Ensemble")
+    print("\n  Training Stacked Ensemble")
     stack_model = train_stacked_model(X_train, y_train)
     evaluate_model(stack_model, X_test, y_test, "Stacked Ensemble",pdf)

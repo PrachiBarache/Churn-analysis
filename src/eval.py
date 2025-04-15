@@ -8,9 +8,9 @@ from sklearn.metrics import (
 )
 
 def evaluate_model(model, X_test, y_test, model_name, pdf):
-    """
-    Evaluate a trained model and save results to a shared multi-page PDF.
-    """
+     
+    #Evaluate a trained model and save results to a shared multi-page PDF.
+     
     y_pred = model.predict(X_test)
     y_proba = model.predict_proba(X_test)[:, 1]
 
@@ -42,7 +42,7 @@ def evaluate_model(model, X_test, y_test, model_name, pdf):
     plt.yticks(fontsize=10)
     plt.legend(loc='lower right', fontsize=10)
 
-    # ✅ Ensure clean save layout
+    #  Ensure clean save layout
     plt.tight_layout()
     pdf.savefig(bbox_inches='tight')  # 🔧 fixes overlap/overflow
     plt.close()
