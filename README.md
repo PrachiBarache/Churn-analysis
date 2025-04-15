@@ -1,9 +1,8 @@
 # 🔄 Customer Churn Prediction: End-to-End ML Project
 
-This project aims to predict customer churn for an e-commerce platform using a complete machine learning pipeline — starting from data exploration and preprocessing to building, evaluating, and comparing models. The goal is to identify high-risk customers and help businesses proactively reduce churn.
+This project aims to predict customer churn for an e-commerce platform using a complete machine learning pipeline starting from data exploration and preprocessing to building, evaluating, and comparing models. The goal is to identify high-risk customers and help businesses proactively reduce churn.
 
 ---
-
 ## 📦 Dataset Overview
 
 The dataset consists of **5,630 rows** and **20 columns**, covering customer behavior, transaction history, preferences, and satisfaction levels.
