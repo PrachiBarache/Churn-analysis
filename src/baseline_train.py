@@ -79,7 +79,7 @@ def train_xgboost(X_train, y_train, save_path="models/xgboost_model.pkl"):
     return model
 
 
-def run_baseline_models(X_train, X_test, y_train, y_test, pdf_path="results/all_models_report.pdf"):
+def run_baseline_models(X_train, X_test, y_train, y_test, pdf):
     """
     Train and evaluate baseline models.
     """
@@ -97,4 +97,4 @@ def run_baseline_models(X_train, X_test, y_train, y_test, pdf_path="results/all_
 
     print("\n🔹 Training XGBoost")
     xgb_model = train_xgboost(X_train, y_train)
-    evaluate_model(xgb_model, X_test, y_test, model_name="XGBoost",pdf)
+    evaluate_model(xgb_model, X_test, y_test,"XGBoost", pdf)

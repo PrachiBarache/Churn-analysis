@@ -2,6 +2,12 @@ import joblib
 import lightgbm as lgb
 import os
 from src.eval import *
+from sklearn.ensemble import StackingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from catboost import CatBoostClassifier
+
 
 def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl",pdf_path="results/all_models_report.pdf"):
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
@@ -22,8 +28,6 @@ def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl",pdf_p
     return model
 
 
-import joblib
-from catboost import CatBoostClassifier
 
 def train_catboost(X_train, y_train, save_path="models/catboost_model.pkl"):
     """
@@ -41,12 +45,6 @@ def train_catboost(X_train, y_train, save_path="models/catboost_model.pkl"):
     joblib.dump(model, save_path)
     print(f"✅ CatBoost model saved at {save_path}")
     return model
-
-import joblib
-from sklearn.ensemble import StackingClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
 
 def train_stacked_model(X_train, y_train, save_path="models/stacked_model.pkl"):
     """
@@ -88,7 +86,7 @@ def train_mlp_model(X_train, y_train, save_path="models/mlp_model.pkl"):
     return model
 
 
-def run_advanced_models(X_train, X_test, y_train, y_test,pdf_path="results/all_models_report.pdf"):
+def run_advanced_models(X_train, X_test, y_train, y_test,pdf):
     """
     Train and evaluate advanced models.
     """
