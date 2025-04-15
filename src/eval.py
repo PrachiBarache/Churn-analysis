@@ -9,7 +9,7 @@ from sklearn.metrics import (
 )
 from matplotlib.backends.backend_pdf import PdfPages
 
-def evaluate_model_pdf(model, X_test, y_test, model_name="Model", pdf_path="results/model_report.pdf"):
+def evaluate_model(model, X_test, y_test, model_name="Model", pdf_path="results/model_report.pdf"):
     """
     Evaluate model and save confusion matrix, ROC curve, and report to a PDF page.
     """
