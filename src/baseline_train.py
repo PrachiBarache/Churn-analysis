@@ -79,22 +79,22 @@ def train_xgboost(X_train, y_train, save_path="models/xgboost_model.pkl"):
     return model
 
 
-def run_baseline_models(X_train, X_test, y_train, y_test):
+def run_baseline_models(X_train, X_test, y_train, y_test, pdf_path="results/all_models_report.pdf"):
     """
     Train and evaluate baseline models.
     """
     print("\n🔹 Training Logistic Regression")
     log_model = train_logistic_model(X_train, y_train)
-    evaluate_model(log_model, X_test, y_test, model_name="Logistic Regression")
+    evaluate_model(log_model, X_test, y_test, "Logistic Regression", pdf)
 
     print("\n🔹 Training Decision Tree")
     dt_model = train_decision_tree(X_train, y_train)
-    evaluate_model(dt_model, X_test, y_test, model_name="Decision Tree")
+    evaluate_model(dt_model, X_test, y_test,"Decision Tree",pdf)
 
     print("\n🔹 Training Random Forest")
     rf_model = train_random_forest(X_train, y_train)
-    evaluate_model(rf_model, X_test, y_test, model_name="Random Forest")
+    evaluate_model(rf_model, X_test, y_test,"Random Forest",pdf)
 
     print("\n🔹 Training XGBoost")
     xgb_model = train_xgboost(X_train, y_train)
-    evaluate_model(xgb_model, X_test, y_test, model_name="XGBoost")
+    evaluate_model(xgb_model, X_test, y_test, model_name="XGBoost",pdf)

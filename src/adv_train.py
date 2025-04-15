@@ -3,7 +3,7 @@ import lightgbm as lgb
 import os
 from src.eval import *
 
-def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl"):
+def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl",pdf_path="results/all_models_report.pdf"):
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
     """
@@ -88,22 +88,22 @@ def train_mlp_model(X_train, y_train, save_path="models/mlp_model.pkl"):
     return model
 
 
-def run_advanced_models(X_train, X_test, y_train, y_test):
+def run_advanced_models(X_train, X_test, y_train, y_test,pdf_path="results/all_models_report.pdf"):
     """
     Train and evaluate advanced models.
     """
     print("\n🔸 Training LightGBM")
     lgb_model = train_lightgbm(X_train, y_train)
-    evaluate_model(lgb_model, X_test, y_test, model_name="LightGBM")
+    evaluate_model(lgb_model, X_test, y_test, "LightGBM", pdf)
 
     print("\n🔸 Training CatBoost")
     cat_model = train_catboost(X_train, y_train)
-    evaluate_model(cat_model, X_test, y_test, model_name="CatBoost")
+    evaluate_model(cat_model, X_test, y_test, "CatBoost", pdf)
 
     print("\n🔸 Training MLP (Neural Net)")
     mlp_model = train_mlp_model(X_train, y_train)
-    evaluate_model(mlp_model, X_test, y_test, model_name="MLP Classifier")
+    evaluate_model(mlp_model, X_test, y_test, "MLP Classifier",pdf)
 
     print("\n🔸 Training Stacked Ensemble")
     stack_model = train_stacked_model(X_train, y_train)
-    evaluate_model(stack_model, X_test, y_test, model_name="Stacked Ensemble")
+    evaluate_model(stack_model, X_test, y_test, "Stacked Ensemble",pdf)

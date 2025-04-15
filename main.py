@@ -1,7 +1,7 @@
 from src.data_load import *
 from src.preprocessing import *
 from src.baseline_train import *
-from src.eval import evaluate_model
+from src.eval import *
 from src.adv_train import*
 # 1. Load the data
 file_path = "data/E Commerce Dataset.xlsx"
@@ -15,7 +15,7 @@ log_model = train_logistic_model(X_train, y_train, save_path="models/logistic_mo
 
 
 # 4. Evaluate the model
-evaluate_model(log_model, X_test, y_test, model_name="Logistic Regression")
+evaluate_model(log_model, X_test, y_test, model_name="Logistic Regression",pdf_path=)
 
 print("\n✅ Churn Prediction Pipeline Complete.")
 
