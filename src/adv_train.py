@@ -1,8 +1,11 @@
 import joblib
 import lightgbm as lgb
+import os
 from src.eval import *
 
 def train_lightgbm(X_train, y_train, save_path="models/lightgbm_model.pkl"):
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
     """
     Trains a LightGBM classifier.
     """

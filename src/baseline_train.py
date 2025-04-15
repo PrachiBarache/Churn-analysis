@@ -2,8 +2,11 @@ import joblib
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 import xgboost as xgb
 from src.eval import *
+import os
+
 
 def train_logistic_model(X_train, y_train, save_path="models/logistic_model.pkl"):
     """
@@ -17,6 +20,7 @@ def train_logistic_model(X_train, y_train, save_path="models/logistic_model.pkl"
     Returns:
         model: Trained LogisticRegression model
     """
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
     # Logistic Regression with balanced class weights to handle class imbalance
     model = LogisticRegression(class_weight='balanced', max_iter=1000)
