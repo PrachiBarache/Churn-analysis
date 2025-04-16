@@ -123,3 +123,56 @@ Evaluation Metrics:
 | Dev Tools      | Visual Studio Code, GitHub |
 
 ---
+
+## ⚠️ Model Reliability & Validation Considerations
+
+While the final stacked model achieved an impressive **98% accuracy and 1.00 AUC**, such scores raise important questions about **generalizability** and **real-world deployment**.
+
+### 🧠 Why High Accuracy May Not Tell the Full Story
+
+| Metric        | Observed Value | Typical Real-World Range |
+|---------------|----------------|--------------------------|
+| Accuracy      | 98%            | 85–95%                   |
+| ROC-AUC       | 1.00           | 0.85–0.95 (excellent), >0.97 (suspicious) |
+| F1 Score      | 0.94           | High — requires context  |
+
+High-performing models are great — but when scores are near-perfect, a **professional data scientist always investigates further**.
+
+---
+
+### 🔍 Potential Causes of Over-Performance
+
+| Potential Cause | What It Means |
+|-----------------|---------------|
+| **Data Leakage** | Features like `Complain`, `OrderCount`, or `CouponUsed` might reflect churn rather than predict it |
+| **Preprocessing Leakage** | Transformations (e.g., scaling, imputation) may have been done before splitting the data |
+| **Train/Test Similarity** | Data might be too uniform between splits, limiting model stress |
+| **Overly Predictive Features** | Certain features could dominate predictions unrealistically |
+
+---
+
+### ✅ What I Did to Validate the Model
+
+To guard against false confidence:
+
+- ✅ Used **stratified train/test split**
+- ✅ Verified performance with **ROC-AUC**
+- ✅ Monitored **class-specific F1 Scores**
+- ✅ (Optional step) Prepared code to integrate **SHAP for feature importance**
+
+---
+
+### 🔬 Possible improvements
+
+To strengthen the model's credibility further:
+
+1. **Leakage Testing**: Remove features closely tied to churn and re-check performance.
+2. **Cross-Validation**: Use stratified k-fold to ensure consistency across data splits.
+3. **Deploy Simulation**: Evaluate model on a "future" (unseen) segment.
+4. **SHAP Values**: Identify dominant features and validate their interpretability.
+5. **Domain Review**: Share top predictors with business stakeholders to check for data leakage risk.
+
+---
+
+
+
