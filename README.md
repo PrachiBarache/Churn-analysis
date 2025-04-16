@@ -5,7 +5,7 @@ This project aims to predict customer churn for an e-commerce platform using a c
 ---
 ## 📦 Dataset Overview
 
-The dataset consists of **5,630 rows** and **20 columns**, covering customer behavior, transaction history, preferences, and satisfaction levels.
+The dataset consists of **5,630 rows** and **20 columns**, covering customer behavior, transaction history, preferences, and satisfaction levels. The dataset used is publicaly available on Kaggle [dataset](https://www.kaggle.com/datasets/ankitverma2010/ecommerce-customer-churn-analysis-and-prediction/data) 
 
 | Column                     | Description                                                                 |
 |----------------------------|-----------------------------------------------------------------------------|
