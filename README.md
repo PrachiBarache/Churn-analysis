@@ -3,9 +3,16 @@
 This project aims to predict customer churn for an e-commerce platform using a complete machine learning pipeline starting from data exploration and preprocessing to building, evaluating, and comparing models. The goal is to identify high-risk customers and help businesses proactively reduce churn.
 
 ---
+- **Goal**: Predict customer churn for an e-commerce platform using a robust, using ML pipeline.
+- **Motivation**: Customer retention is more cost-effective than acquiring new customers. Early churn detection helps companies proactively engage high-risk customers.
+- **Steps**: Perform EDA, apply preprocessing, build baseline & advanced models, evaluate thoroughly, and explain predictions.
+- **Outcome**: Achieved a final stacked ensemble model with **98% accuracy** and **1.00 ROC AUC**, validated through careful leakage inspection.
+---
 ## 📦 Dataset Overview
 
-The dataset consists of **5,630 rows** and **20 columns**, covering customer behavior, transaction history, preferences, and satisfaction levels. The dataset used is publicaly available on Kaggle [dataset](https://www.kaggle.com/datasets/ankitverma2010/ecommerce-customer-churn-analysis-and-prediction/data) 
+The dataset consists of **5,630 rows** and **20 columns**, **target variable**('Churn), covering customer behavior, transaction history, preferences, and satisfaction levels. 
+The dataset used is publicaly available on Kaggle [dataset](https://www.kaggle.com/datasets/ankitverma2010/ecommerce-customer-churn-analysis-and-prediction/data) 
+
 
 | Column                     | Description                                                                 |
 |----------------------------|-----------------------------------------------------------------------------|
@@ -34,21 +41,21 @@ The dataset consists of **5,630 rows** and **20 columns**, covering customer beh
 
 ## 🔍 Exploratory Data Analysis (EDA)
 
-📄 **[Click to view full EDA report](results/eda_report.pdf)**
+**[Click to view full EDA report](results/eda_report.pdf)**
 
 **Insights:**
 
-- **Churn Distribution:** Only ~17% of users churned, indicating moderate class imbalance.
-- **Tenure:** New customers (<6 months) are more likely to churn.
-- **Complain & SatisfactionScore:** Low satisfaction and recent complaints correlate with churn.
-- **Preferred Categories:** Customers who prefer 'Mobile' or 'Fashion' are more likely to churn.
-- **Correlations:**
-  - `OrderAmountHikeFromlastYear` has moderate positive correlation with churn.
-  - `Tenure` has a strong negative correlation with churn.
+- **Churn Rate**: ~17% churn, confirming moderate imbalance
+- **Correlations**:
+  - `Tenure` negatively correlated with churn (new users churn more)
+  - `OrderAmountHikeFromlastYear` showed strong positive correlation
+- **Behavioral Patterns**:
+  - Mobile users and single individuals churned more
+  - COD and UPI users showed higher churn than credit card users
 
 ---
 
-## 🧹 Data Preprocessing
+##  Data Preprocessing
 
 ### ✅ Steps Applied:
 

@@ -1,6 +1,3 @@
-Got it! You want the **entire churn prediction project** you’ve built (not the poster) to be documented in a **professional structure** similar to your course poster, but with the much more advanced, full-pipeline project you created.
-
-Here's a **professional report-style structure** of your project, covering everything from dataset to model explainability — structured like an academic or industry-level ML report.
 
 ---
 
@@ -8,18 +5,11 @@ Here's a **professional report-style structure** of your project, covering every
 
 ---
 
-## 1. **Project Overview**
-
-- **Goal**: Predict customer churn for an e-commerce platform using a robust, explainable ML pipeline.
-- **Motivation**: Customer retention is more cost-effective than acquisition. Early churn detection helps companies proactively engage high-risk customers.
-- **Approach**: Perform EDA, apply preprocessing, build baseline & advanced models, evaluate thoroughly, and explain predictions.
-- **Outcome**: Achieved a final stacked ensemble model with **98% accuracy** and **1.00 ROC AUC**, validated through careful leakage inspection.
-
 ---
 
 ## 2. **Dataset Description**
 
-- **Source**: E-Commerce customer dataset (Excel)
+- **Source**: E-Commerce customer dataset (Excel) 
 - **Size**: 5630 records, 20 features + 1 target (`Churn`)
 - **Types of Features**:
   - **Categorical**: `PreferredPaymentMode`, `Gender`, `MaritalStatus`, etc.
