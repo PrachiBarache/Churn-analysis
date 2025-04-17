@@ -92,9 +92,6 @@ These insights guided feature selection and model choice.
 ---
 
 ## 7. ** Feature Importance**
-
-📄 [View Explainability Report](explainability_report.md)
-
 - **Top Features**:
   - `Tenure`: Strongest negative churn predictor
   - `OrderAmountHikeFromlastYear`: High increases linked with churn
