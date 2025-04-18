@@ -1,17 +1,17 @@
-# 🔄 Customer Churn Prediction: End-to-End ML Project
+#  Customer Churn Prediction: End-to-End ML Project
 
 This project aims to predict customer churn for an e-commerce platform using a complete machine learning pipeline starting from data exploration and preprocessing to building, evaluating, and comparing models. The goal is to identify high-risk customers and help businesses proactively reduce churn.
 
----
+
 - **Goal**: Predict customer churn for an e-commerce platform using a robust, using ML pipeline.
 - **Motivation**: Customer retention is more cost-effective than acquiring new customers. Early churn detection helps companies proactively engage high-risk customers.
 - **Steps**: Perform EDA, apply preprocessing, build baseline & advanced models, evaluate thoroughly, and explain predictions.
 - **Outcome**: Achieved a final stacked ensemble model with **98% accuracy** and **1.00 ROC AUC**, validated through careful leakage inspection.
----
-## 📦 Dataset Overview
+
+##  Dataset Overview
 
 The dataset consists of **5,630 rows** and **20 columns**, **target variable**('Churn), covering customer behavior, transaction history, preferences, and satisfaction levels. 
-The dataset used is publicaly available on Kaggle [dataset](https://www.kaggle.com/datasets/ankitverma2010/ecommerce-customer-churn-analysis-and-prediction/data) 
+The dataset used is publicly available on Kaggle [dataset](https://www.kaggle.com/datasets/ankitverma2010/ecommerce-customer-churn-analysis-and-prediction/data) 
 
 
 | Column                     | Description                                                                 |
@@ -37,11 +37,8 @@ The dataset used is publicaly available on Kaggle [dataset](https://www.kaggle.c
 | `DaySinceLastOrder`        | Days since the last order                                                   |
 | `CashbackAmount`           | Average cashback received                                                   |
 
----
 
-## 🔍 Exploratory Data Analysis (EDA)
-
-**[Click to view full EDA report](results/eda_report.pdf)**
+## Exploratory Data Analysis (EDA)
 
 **Insights:**
 
@@ -53,11 +50,10 @@ The dataset used is publicaly available on Kaggle [dataset](https://www.kaggle.c
   - Mobile users and single individuals churned more
   - COD and UPI users showed higher churn than credit card users
 
----
 
 ##  Data Preprocessing
 
-### ✅ Steps Applied:
+###  Steps Applied:
 
 - **Missing Values:** Filled using median for numerical columns and forward fill for temporal features.
 - **Encoding:**
@@ -69,9 +65,8 @@ The dataset used is publicaly available on Kaggle [dataset](https://www.kaggle.c
 - **Train/Test Split:**
   - 80/20 stratified split to preserve class ratio.
 
----
 
-## 🤖 Modeling Strategy & Justification
+## Modeling Strategy & Justification
 
 The project follows a progressive modeling strategy to demonstrate improvement through increasingly advanced models:
 
@@ -86,11 +81,8 @@ The project follows a progressive modeling strategy to demonstrate improvement t
 | **MLP Classifier**      | Neural net model, adds non-linearity with deep layers      |
 | **Stacked Ensemble**    | Combines multiple model predictions for best performance   |
 
----
 
-## 📊 Model Evaluation & Results
-
-📄 **[Click to view full model report PDF](results/all_models_report.pdf)**
+##  Model Evaluation & Results
 
 Evaluation Metrics:  
 - **ROC-AUC** (priority metric due to class imbalance)  
@@ -107,18 +99,18 @@ Evaluation Metrics:
 | MLP Classifier    | 0.98   | 0.87     | 96%      | Neural net approach    |
 | Stacked Ensemble  | 1.00   | 0.94     | 98%      | 🏆 Top performing model|
 
----
 
-## 🧠 Key Improvements from Modeling Journey
+
+##  Key Improvements from Modeling Journey
 
 - Transitioning from **Logistic Regression** to **Tree-Based Models** captured nonlinear relationships.
 - **Boosted models (XGBoost, LightGBM)** significantly improved recall for churned customers (class 1).
 - **Ensemble model** delivered the best balance of all metrics, demonstrating synergy between models.
 - Clear lift in **ROC-AUC** from 0.86 → 1.00 through iterative modeling.
 
----
 
-## 🛠 Tools & Technologies
+
+##  Tools & Technologies
 
 | Purpose         | Stack |
 |----------------|-------|
@@ -129,13 +121,13 @@ Evaluation Metrics:
 | Reporting      | PdfPages, joblib |
 | Dev Tools      | Visual Studio Code, GitHub |
 
----
 
-## ⚠️ Model Reliability & Validation Considerations
+
+## Model Reliability & Validation Considerations
 
 While the final stacked model achieved an impressive **98% accuracy and 1.00 AUC**, such scores raise important questions about **generalizability** and **real-world deployment**.
 
-### 🧠 Why High Accuracy May Not Tell the Full Story
+###  Why High Accuracy May Not Tell the Full Story
 
 | Metric        | Observed Value | Typical Real-World Range |
 |---------------|----------------|--------------------------|
@@ -145,9 +137,8 @@ While the final stacked model achieved an impressive **98% accuracy and 1.00 AUC
 
 High-performing models are great — but when scores are near-perfect, a **professional data scientist always investigates further**.
 
----
 
-### 🔍 Potential Causes of Over-Performance
+###  Potential Causes of Over-Performance
 
 | Potential Cause | What It Means |
 |-----------------|---------------|
@@ -156,9 +147,8 @@ High-performing models are great — but when scores are near-perfect, a **profe
 | **Train/Test Similarity** | Data might be too uniform between splits, limiting model stress |
 | **Overly Predictive Features** | Certain features could dominate predictions unrealistically |
 
----
 
-### ✅ What I Did to Validate the Model
+###  What I Did to Validate the Model
 
 To guard against false confidence:
 
@@ -167,9 +157,9 @@ To guard against false confidence:
 - ✅ Monitored **class-specific F1 Scores**
 - ✅ (Optional step) Prepared code to integrate **SHAP for feature importance**
 
----
 
-### 🔬 Possible improvements
+
+###  Possible improvements
 
 To strengthen the model's credibility further:
 
@@ -179,7 +169,7 @@ To strengthen the model's credibility further:
 4. **SHAP Values**: Identify dominant features and validate their interpretability.
 5. **Domain Review**: Share top predictors with business stakeholders to check for data leakage risk.
 
----
+
 
 
 
