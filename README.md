@@ -97,7 +97,7 @@ Evaluation Metrics:
 | LightGBM          | 0.99   | 0.90     | 96%      | Very close to XGBoost  |
 | CatBoost          | 0.96   | 0.74     | 89%      | Better on categories   |
 | MLP Classifier    | 0.98   | 0.87     | 96%      | Neural net approach    |
-| Stacked Ensemble  | 1.00   | 0.94     | 98%      | 🏆 Top performing model|
+| Stacked Ensemble  | 1.00   | 0.94     | 98%      |  Top performing model|
 
 
 
